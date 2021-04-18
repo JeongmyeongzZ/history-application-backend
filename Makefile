@@ -4,14 +4,14 @@ export
 DOCKER_COMPOSE = cd docker && docker-compose -p history_application_backend
 
 .PHONY: first
-flyway: ## make env with example files
+first: ## make env with example files
 		cp ./src/main/resources/example.application.properties ./src/main/resources/application.properties
 		cp ./docker/.env.example ./docker/.env
-		mkdir -p ./src/resources/db/migration
+		mkdir -p ./src/main/resources/db/migration
 
 .PHONY: flyway
 flyway: ## run flyway, use 's' variable to select a service. make s=flywayInfo flyway
-		./gradlew -Pflyway.url=$(spring.flyway.url) -Pflyway.schemas=$(spring.flyway.schemas) -Pflyway.user=$(spring.flyway.user) -Pflyway.password=$(spring.flyway.password) $(s)
+		./gradlew $(s)
 
 .PHONY: start
 start: erase build up ## clean current environment, recreate dependencies and spin up again

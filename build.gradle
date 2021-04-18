@@ -5,7 +5,14 @@ plugins {
     id "org.flywaydb.flyway" version "7.3.1"
 }
 
-group = 'com.example'
+flyway {
+    url = 'jdbc:mariadb://127.0.0.1:3308/history'
+    user = 'history'
+    password = 'secret'
+    schemas = 'history'
+}
+
+group = 'application'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

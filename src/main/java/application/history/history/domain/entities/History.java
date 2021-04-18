@@ -1,4 +1,4 @@
-package com.example.demo.history.domain.entities;
+package application.history.history.domain.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
