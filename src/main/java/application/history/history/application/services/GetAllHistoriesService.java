@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GetAllHistoryService {
+public class GetAllHistoriesService {
     private final HistoryRepository repository;
 
-    public GetAllHistoryService(HistoryRepository repository) {
+    public GetAllHistoriesService(HistoryRepository repository) {
         this.repository = repository;
     }
 
