@@ -21,8 +21,8 @@ public class UpdateHistoryController {
 
     @PutMapping("/histories/{date}")
     public History save(
-            @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
-            @RequestBody UpdateHistoryInput request
+        @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+        @RequestBody UpdateHistoryInput request
     ) {
         return this.service.run(date, request);
     }
