@@ -10,6 +10,7 @@ flyway {
     user = 'history'
     password = 'secret'
     schemas = 'history'
+    baselineOnMigrate = 'true'
 }
 
 group = 'application'

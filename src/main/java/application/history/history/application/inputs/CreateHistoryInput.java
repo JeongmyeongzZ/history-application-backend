@@ -1,26 +1,19 @@
 package application.history.history.application.inputs;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-public class CreateHistoryInput {
-    private final String content;
+@NoArgsConstructor
+@Getter
+public final class CreateHistoryInput {
+    @NotNull
+    private String content;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private final Date date;
-
-    public CreateHistoryInput(Date date, String content) {
-        this.date = date;
-        this.content = content;
-    }
-
-    public Date getDate() {
-        return this.date;
-    }
-
-    public String getContent() {
-        return content;
-    }
+    @NotNull
+    private Date date;
 }

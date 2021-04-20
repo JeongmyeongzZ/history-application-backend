@@ -26,4 +26,8 @@ public class History {
         this.content = content;
         this.date = date;
     }
+
+    public void updateContent(String content) {
+        this.content = content;
+    }
 }
