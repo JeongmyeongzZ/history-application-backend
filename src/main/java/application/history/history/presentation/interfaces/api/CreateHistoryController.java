@@ -6,6 +6,7 @@ import application.history.history.domain.entities.History;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,7 +18,8 @@ public class CreateHistoryController {
     }
 
     @PostMapping("/histories")
-    public History save(@Validated @RequestBody CreateHistoryInput request) {
+    public @ResponseBody
+    History save(@Validated @RequestBody CreateHistoryInput request) {
         return this.service.run(request);
     }
 }
