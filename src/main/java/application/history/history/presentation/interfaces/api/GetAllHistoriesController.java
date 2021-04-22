@@ -2,6 +2,7 @@ package application.history.history.presentation.interfaces.api;
 
 import application.history.history.application.services.GetAllHistoriesService;
 import application.history.history.domain.entities.History;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class GetAllHistoriesController {
     }
 
     @GetMapping("/histories")
-    public Iterable<History> getAllHistories() {
-        return service.run();
+    public ResponseEntity<Iterable<History>> getAllHistories() {
+        return ResponseEntity.ok(service.run());
     }
 }
