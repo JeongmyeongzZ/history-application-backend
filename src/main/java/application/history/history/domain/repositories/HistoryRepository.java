@@ -5,13 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository
 public interface HistoryRepository extends CrudRepository<History, String> {
-    Optional<History> findByDate(Date date);
+    Optional<History> findByDate(LocalDate date);
 
     @Transactional
-    void deleteByDate(Date date);
+    void deleteByDate(LocalDate date);
 }

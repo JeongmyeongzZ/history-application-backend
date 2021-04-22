@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Getter
@@ -15,5 +15,5 @@ public final class CreateHistoryInput {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @NotNull
-    private Date date;
+    private LocalDate date;
 }

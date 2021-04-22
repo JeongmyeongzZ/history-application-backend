@@ -5,7 +5,7 @@ import application.history.history.domain.entities.History;
 import application.history.history.domain.repositories.HistoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 public class UpdateHistoryContentService {
@@ -15,7 +15,7 @@ public class UpdateHistoryContentService {
         this.repository = repository;
     }
 
-    public History run(Date date, UpdateHistoryInput request) {
+    public History run(LocalDate date, UpdateHistoryInput request) {
         History history = this.repository.findByDate(date).orElseThrow();
 
         history.updateContent(request.getContent());

@@ -4,6 +4,7 @@ import application.history.history.domain.entities.History;
 import application.history.history.domain.repositories.HistoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ public class GetHistoryByDateService {
         this.repository = repository;
     }
 
-    public Optional<History> run(Date date) {
+    public Optional<History> run(LocalDate date) {
         return this.repository.findByDate(date);
     }
 }

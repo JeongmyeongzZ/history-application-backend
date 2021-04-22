@@ -3,7 +3,7 @@ package application.history.history.application.services;
 import application.history.history.domain.repositories.HistoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 public class DeleteHistoryService {
@@ -13,7 +13,7 @@ public class DeleteHistoryService {
         this.repository = repository;
     }
 
-    public void run(Date date) {
+    public void run(LocalDate date) {
         this.repository.deleteByDate(date);
     }
 }

@@ -2,14 +2,14 @@ package application.history.history.presentation.interfaces.api;
 
 import application.history.history.application.inputs.UpdateHistoryInput;
 import application.history.history.application.services.UpdateHistoryContentService;
-import application.history.history.domain.entities.History;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @RestController
 public class UpdateHistoryController {
@@ -20,10 +20,12 @@ public class UpdateHistoryController {
     }
 
     @PutMapping("/histories/{date}")
-    public History save(
-        @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+    public ResponseEntity<Object> save(
+        @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
         @RequestBody UpdateHistoryInput request
     ) {
-        return this.service.run(date, request);
+        this.service.run(date, request);
+
+        return ResponseEntity.noContent().build();
     }
 }

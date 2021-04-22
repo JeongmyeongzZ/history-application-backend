@@ -1,17 +1,19 @@
 package application.history.history.domain.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @Entity
 @Getter
-@Table(name = "histories")
+@Table(name = "history")
 public class History {
     @Id
     @Column(columnDefinition = "VARCHAR(36)")
@@ -20,11 +22,10 @@ public class History {
     @Column
     private String content;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    @Column(columnDefinition = "DATE")
+    private LocalDate date;
 
-    public History(String id, String content, Date date) {
+    public History(String id, String content, LocalDate date) {
         this.id = id;
         this.content = content;
         this.date = date;
