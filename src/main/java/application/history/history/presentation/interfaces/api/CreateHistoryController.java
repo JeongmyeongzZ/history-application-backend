@@ -28,8 +28,8 @@ public class CreateHistoryController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{date}")
-                .buildAndExpand(history.getDateByFormat("yyyy-MM-dd")).
-                toUri();
+                .buildAndExpand(history.getDateByFormat("yyyy-MM-dd"))
+                .toUri();
 
         return ResponseEntity.created(location).body(history);
     }

@@ -12,6 +12,5 @@ import java.util.Optional;
 public interface HistoryRepository extends CrudRepository<History, String> {
     Optional<History> findByDate(LocalDate date);
 
-    @Transactional
     void deleteByDate(LocalDate date);
 }

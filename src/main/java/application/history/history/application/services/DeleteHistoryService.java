@@ -3,9 +3,11 @@ package application.history.history.application.services;
 import application.history.history.domain.repositories.HistoryRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Service
+@Transactional
 public class DeleteHistoryService {
     private final HistoryRepository repository;
 
