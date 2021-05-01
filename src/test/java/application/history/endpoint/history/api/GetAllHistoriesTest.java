@@ -22,7 +22,7 @@ public class GetAllHistoriesTest extends IntegrationTest implements WithFaker {
 
     @SneakyThrows
     @Test
-    public void createHistory() {
+    public void getAllHistories() {
 //        var randomContent = faker.random().hex();
 //        var randomDate = faker.date().future(365, TimeUnit.DAYS).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 //
