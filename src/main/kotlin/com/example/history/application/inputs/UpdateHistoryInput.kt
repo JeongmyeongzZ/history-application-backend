@@ -1,13 +1,13 @@
 package com.example.history.application.inputs
 
-import com.sun.istack.NotNull
+import com.fasterxml.jackson.annotation.JsonFormat
+import java.time.LocalDate
 
 
-class UpdateHistoryInput {
-    fun getContent(): String? {
-        return this.content;
-    }
-
-    @NotNull
-    private val content: String? = null
-}
+data class UpdateHistoryInput(
+    val title: String,
+    val content: String,
+    val improvements: String?,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") val startDate: LocalDate,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") val endDate: LocalDate?
+)
