@@ -1,23 +1,12 @@
 package com.example.history.application.inputs
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import com.sun.istack.NotNull
 import java.time.LocalDate
 
-class CreateHistoryInput(@field:NotNull private val content: String, date: LocalDate) {
-    fun getContent(): String {
-        return this.content;
-    }
-
-    fun getDate(): LocalDate {
-        return this.date;
-    }
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @NotNull
-    private val date: LocalDate
-
-    init {
-        this.date = date
-    }
-}
+data class CreateHistoryInput(
+    val title: String,
+    val content: String,
+    val improvements: String?,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") val startDate: LocalDate,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") val endDate: LocalDate?
+)

@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class CreateHistoryService(repository: HistoryRepository) {
-    private val repository: HistoryRepository
+class CreateHistoryService(private val repository: HistoryRepository) {
     fun run(request: CreateHistoryInput): History {
         return repository.save(
             History(
-                UUID.randomUUID().toString(), request.getContent(), request.getDate()
+                UUID.randomUUID().toString(),
+                request.title,
+                request.content,
+                request.improvements,
+                request.startDate,
+                request.endDate
             )
         )
-    }
-
-    init {
-        this.repository = repository
     }
 }

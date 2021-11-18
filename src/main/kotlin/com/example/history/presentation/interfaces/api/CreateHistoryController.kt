@@ -11,21 +11,17 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
-class CreateHistoryController(createHistoryService: CreateHistoryService) {
-    private val service: CreateHistoryService
+class CreateHistoryController(private val service: CreateHistoryService) {
 
     @PostMapping("/histories")
     fun save(@Validated @RequestBody request: CreateHistoryInput): ResponseEntity<History> {
         val history: History = service.run(request)
+
         val location = ServletUriComponentsBuilder
             .fromCurrentRequest()
-            .path("/{date}")
-            .buildAndExpand(history.getDateByFormat("yyyy-MM-dd"))
+            .path("/{id}")
+            .buildAndExpand(history.id)
             .toUri()
-        return ResponseEntity.created(location).body<History>(history)
-    }
-
-    init {
-        service = createHistoryService
+        return ResponseEntity.created(location).body(history)
     }
 }

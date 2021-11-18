@@ -1,32 +1,36 @@
 package com.example.history.domain.entities
 
-import java.text.SimpleDateFormat
 import java.time.LocalDate
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "history")
 data class History(
-    @field:Column(columnDefinition = "VARCHAR(36)") @field:Id private val id: String,
-    @field:Column private var title: String,
-    @field:Column private var content: String,
-    @field:Column private var improvements: String?,
-    @field:Column(columnDefinition = "DATE") private var startDate: LocalDate,
-    @field:Column(columnDefinition = "DATE") private var endDate: LocalDate?,
-    @field:Column(columnDefinition = "DATE") private var createdDate: LocalDate,
-    @field:Column(columnDefinition = "DATE") private var updatedDate: LocalDate
+    @Column(columnDefinition = "VARCHAR(36)") @Id val id: String,
+    @Column var title: String,
+    @Column var content: String,
+    @Column var improvements: String?,
+    @Column(columnDefinition = "DATE") var startDate: LocalDate,
+    @Column(columnDefinition = "DATE") var endDate: LocalDate?,
 ) {
-    // todo to util
-//    fun getDateByFormat(format: String): String {
-//        val simpleDateFormat = SimpleDateFormat(format)
-//
-//        return simpleDateFormat.format(date)
-//    }
+    @Column(columnDefinition = "DATE")
+    lateinit var createdDate: LocalDate
+
+    @Column(columnDefinition = "DATE")
+    lateinit var updatedDate: LocalDate
 
     fun updateContent(content: String) {
         this.content = content
+    }
+
+    @PrePersist
+    fun prePersist() {
+        this.createdDate = LocalDate.now()
+        this.updatedDate = LocalDate.now()
+    }
+
+    @PreUpdate
+    fun preUpdate() {
+        this.updatedDate = LocalDate.now()
     }
 }
