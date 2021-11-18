@@ -1,29 +1,25 @@
 package com.example.history.presentation.interfaces.api
 
 import com.example.history.application.inputs.UpdateHistoryInput
-import com.example.history.application.services.UpdateHistoryContentService
-import org.springframework.format.annotation.DateTimeFormat
+import com.example.history.application.services.FindHistoryUseCase
+import com.example.history.application.services.SaveHistoryUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDate
 
 @RestController
-class UpdateHistoryController(updateHistoryContentService: UpdateHistoryContentService) {
-    private val service: UpdateHistoryContentService
+class UpdateHistoryController(private val updateHistoryService: SaveHistoryUseCase, private val findHistoryService: FindHistoryUseCase) {
 
-    @PutMapping("/histories/{date}")
+    @PutMapping("/histories/{id}")
     fun save(
-        @PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") date: LocalDate?,
+        @PathVariable("id") id: String,
         @RequestBody request: UpdateHistoryInput
     ): ResponseEntity<Any> {
-        service.run(date, request)
+        updateHistoryService.save(findHistoryService.findById(id))
+
         return ResponseEntity.noContent().build()
     }
 
-    init {
-        service = updateHistoryContentService
-    }
 }

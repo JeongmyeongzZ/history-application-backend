@@ -1,7 +1,7 @@
 package com.example.history.presentation.interfaces.api
 
 import com.example.history.application.inputs.CreateHistoryInput
-import com.example.history.application.services.CreateHistoryService
+import com.example.history.application.services.SaveHistoryUseCase
 import com.example.history.domain.entities.History
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
-class CreateHistoryController(private val service: CreateHistoryService) {
+class CreateHistoryController(private val service: SaveHistoryUseCase) {
 
     @PostMapping("/histories")
     fun save(@Validated @RequestBody request: CreateHistoryInput): ResponseEntity<History> {
-        val history: History = service.run(request)
+        val history: History = service.save(request.toEntity())
 
         val location = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(history.id)
             .toUri()
+
         return ResponseEntity.created(location).body(history)
     }
 }

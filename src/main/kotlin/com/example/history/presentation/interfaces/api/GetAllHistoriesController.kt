@@ -1,19 +1,16 @@
 package com.example.history.presentation.interfaces.api
 
-import com.example.history.application.services.GetAllHistoriesService
+import com.example.history.application.services.FindHistoryUseCase
+import com.example.history.domain.entities.History
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class GetAllHistoriesController(getAllHistory: GetAllHistoriesService) {
-    private val service: GetAllHistoriesService
+class GetAllHistoriesController(private val service: FindHistoryUseCase) {
 
-    @get:GetMapping("/histories")
-    val allHistories: ResponseEntity<Iterable<Any>>
-        get() = ResponseEntity.ok(service.run())
-
-    init {
-        service = getAllHistory
+    @GetMapping("/histories")
+    fun getHistories(): ResponseEntity<Iterable<History>> {
+        return ResponseEntity.ok(service.findAll())
     }
 }
