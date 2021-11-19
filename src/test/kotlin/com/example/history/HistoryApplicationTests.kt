@@ -9,5 +9,4 @@ class HistoryApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
