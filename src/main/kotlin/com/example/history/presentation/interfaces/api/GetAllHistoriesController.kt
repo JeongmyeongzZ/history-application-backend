@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class GetAllHistoriesController(private val service: FindHistoryUseCase) {
 
     @GetMapping
-    fun getHistories(): Iterable<History> {
-        return service.findAll()
+    fun getHistories(): ResponseEntity<Iterable<History>> {
+        return ResponseEntity.ok(service.findAll())
     }
 }
