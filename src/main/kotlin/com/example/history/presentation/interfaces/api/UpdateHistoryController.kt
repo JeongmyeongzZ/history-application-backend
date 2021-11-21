@@ -2,14 +2,14 @@ package com.example.history.presentation.interfaces.api
 
 import com.example.history.application.inputs.UpdateHistoryInput
 import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.CreateHistoryUseCase
+import com.example.history.application.services.SaveHistoryUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/histories")
 class UpdateHistoryController(
-    private val updateHistoryService: CreateHistoryUseCase,
+    private val updateHistoryService: SaveHistoryUseCase,
     private val findHistoryService: FindHistoryUseCase
 ) {
 

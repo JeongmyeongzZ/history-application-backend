@@ -1,7 +1,7 @@
 package com.example.history.presentation.interfaces.api
 
 import com.example.history.application.inputs.CreateHistoryInput
-import com.example.history.application.services.CreateHistoryUseCase
+import com.example.history.application.services.SaveHistoryUseCase
 import com.example.history.domain.entities.History
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
 @RequestMapping("/api/histories")
-class CreateHistoryController(private val service: CreateHistoryUseCase) {
+class CreateHistoryController(private val service: SaveHistoryUseCase) {
 
     @PostMapping
     fun save(@Validated @RequestBody request: CreateHistoryInput): ResponseEntity<History> {
