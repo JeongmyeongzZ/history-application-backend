@@ -5,7 +5,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 fun getMockHistory(): String {
-    return Files.readString(Paths.get(ClassPathResource("history.json").uri))
+    return Files.readString(Paths.get(ClassPathResource("stub/history.json").uri))
 }
 
 fun getMockHistories(): String {

@@ -2,22 +2,31 @@ package com.example.history.presentation.interfaces.api
 
 import com.example.history.application.inputs.UpdateHistoryInput
 import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.SaveHistoryUseCase
+import com.example.history.application.services.CreateHistoryUseCase
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-class UpdateHistoryController(private val updateHistoryService: SaveHistoryUseCase, private val findHistoryService: FindHistoryUseCase) {
+@RequestMapping("/api/histories")
+class UpdateHistoryController(
+    private val updateHistoryService: CreateHistoryUseCase,
+    private val findHistoryService: FindHistoryUseCase
+) {
 
-    @PutMapping("/histories/{id}")
-    fun save(
+    @PutMapping("/{id}")
+    fun update(
         @PathVariable("id") id: String,
         @RequestBody request: UpdateHistoryInput
     ): ResponseEntity<Any> {
-        updateHistoryService.save(findHistoryService.findById(id))
+        val history = findHistoryService.findById(id);
+
+        history.content = request.content;
+        history.title = request.title;
+        history.improvements = request.improvements;
+        history.startDate = request.startDate;
+        history.endDate = request.endDate;
+
+        updateHistoryService.save(history)
 
         return ResponseEntity.noContent().build()
     }
