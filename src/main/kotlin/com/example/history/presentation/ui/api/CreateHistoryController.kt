@@ -5,19 +5,29 @@ import com.example.history.application.service.SaveHistoryUseCase
 import com.example.history.domain.entity.History
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
+import java.util.*
 
 @RestController
-@RequestMapping("/api/histories")
 class CreateHistoryController(private val service: SaveHistoryUseCase) {
 
-    @PostMapping
-    fun save(@Validated @RequestBody request: CreateHistoryInput): ResponseEntity<History> {
-        val history: History = service.save(request.toEntity())
+    @PostMapping("/api/experiences/{experienceId}/histories")
+    fun save(
+        @PathVariable("experienceId") experienceId: String,
+        @Validated @RequestBody request: CreateHistoryInput
+    ): ResponseEntity<History> {
+        val history = service.save(
+            History(
+                UUID.randomUUID().toString(),
+                experienceId,
+                request.title,
+                request.content,
+                request.improvements,
+                request.startDate,
+                request.endDate
+            )
+        )
 
         val location = ServletUriComponentsBuilder
             .fromCurrentRequest()

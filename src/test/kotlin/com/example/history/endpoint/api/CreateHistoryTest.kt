@@ -45,7 +45,7 @@ class CreateHistoryTest {
         ).willReturn(history)
 
         mockMvc.perform(
-            post("/api/histories")
+            post("/api/experiences/f3415dc6-4b86-11ec-81d3-0242ac130003/histories")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     "{" +
