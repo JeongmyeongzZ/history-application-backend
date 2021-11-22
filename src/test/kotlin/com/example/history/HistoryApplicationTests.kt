@@ -1,12 +1,16 @@
 package com.example.history
 
-import org.junit.jupiter.api.Test
+import org.mockito.Mockito
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class HistoryApplicationTests {
+}
 
-    @Test
-    fun contextLoads() {
-    }
+/**
+ * @link {https://withhamit.tistory.com/138}
+ */
+fun <T> any(): T {
+    Mockito.any<T>()
+    return null as T
 }

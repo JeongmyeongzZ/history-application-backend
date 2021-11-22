@@ -1,5 +1,6 @@
 package com.example.history.endpoint.api
 
+import com.example.history.any
 import com.example.history.application.service.SaveHistoryUseCase
 import com.example.history.domain.entity.History
 import com.example.history.presentation.ui.api.CreateHistoryController
@@ -9,7 +10,6 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
-import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
@@ -40,7 +40,7 @@ class CreateHistoryTest {
 
         given(
             saveHistoryUseCase.save(
-                any(History::class.java)
+                any()
             )
         ).willReturn(history)
 
@@ -57,13 +57,5 @@ class CreateHistoryTest {
         )
             .andExpect(status().isCreated)
             .andDo(MockMvcResultHandlers.print())
-    }
-
-    /**
-     * @link {https://withhamit.tistory.com/138}
-     */
-    private fun <T> any(java: Class<History>): T {
-        Mockito.any<T>()
-        return null as T
     }
 }

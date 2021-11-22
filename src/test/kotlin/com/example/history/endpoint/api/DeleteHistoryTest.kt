@@ -11,7 +11,6 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito
 import org.mockito.BDDMockito.given
-import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
@@ -47,13 +46,5 @@ class DeleteHistoryTest {
         mockMvc.perform(delete("/api/histories/${history.id}"))
             .andExpect(status().isNoContent)
             .andDo(MockMvcResultHandlers.print())
-    }
-
-    /**
-     * @link {https://withhamit.tistory.com/138}
-     */
-    private fun <T> any(java: Class<History>): T {
-        Mockito.any<T>()
-        return null as T
     }
 }
