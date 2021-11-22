@@ -1,8 +1,8 @@
-package com.example.history.presentation.interfaces.api
+package com.example.history.presentation.ui.api
 
-import com.example.history.application.inputs.UpdateHistoryInput
-import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.SaveHistoryUseCase
+import com.example.history.application.input.UpdateHistoryInput
+import com.example.history.application.service.FindHistoryUseCase
+import com.example.history.application.service.SaveHistoryUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 

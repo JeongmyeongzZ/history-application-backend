@@ -1,4 +1,4 @@
-package com.example.history.application.inputs
+package com.example.history.application.input
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDate

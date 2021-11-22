@@ -1,7 +1,7 @@
 package com.example.history.endpoint.api
 
-import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.presentation.interfaces.api.GetAllHistoriesController
+import com.example.history.application.service.FindHistoryUseCase
+import com.example.history.presentation.ui.api.GetAllHistoriesController
 import com.example.util.getMockHistories
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

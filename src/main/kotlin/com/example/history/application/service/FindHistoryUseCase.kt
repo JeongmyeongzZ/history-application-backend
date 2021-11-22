@@ -1,6 +1,6 @@
-package com.example.history.application.services
+package com.example.history.application.service
 
-import com.example.history.domain.entities.History
+import com.example.history.domain.entity.History
 
 interface FindHistoryUseCase {
     fun findById(id: String): History

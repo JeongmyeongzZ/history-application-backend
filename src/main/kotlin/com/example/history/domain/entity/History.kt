@@ -1,4 +1,4 @@
-package com.example.history.domain.entities
+package com.example.history.domain.entity
 
 import java.time.LocalDate
 import javax.persistence.*
@@ -7,6 +7,7 @@ import javax.persistence.*
 @Table(name = "history")
 data class History(
     @Column(columnDefinition = "VARCHAR(36)") @Id val id: String,
+    @Column(columnDefinition = "VARCHAR(36)") @Id val experienceId: String,
     @Column var title: String,
     @Column var content: String,
     @Column var improvements: String?,
@@ -18,10 +19,6 @@ data class History(
 
     @Column(columnDefinition = "DATE")
     lateinit var updatedDate: LocalDate
-
-    fun updateContent(content: String) {
-        this.content = content
-    }
 
     @PrePersist
     fun prePersist() {

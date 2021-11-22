@@ -1,6 +1,6 @@
-package com.example.history.application.inputs
+package com.example.history.application.input
 
-import com.example.history.domain.entities.History
+import com.example.history.domain.entity.History
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDate
 import java.util.*

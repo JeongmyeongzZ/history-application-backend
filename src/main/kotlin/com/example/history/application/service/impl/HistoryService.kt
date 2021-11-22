@@ -1,11 +1,11 @@
-package com.example.history.application.services.impl
+package com.example.history.application.service.impl
 
 import com.example.history.application.exception.HistoryNotFoundException
-import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.RemoveHistoryUseCase
-import com.example.history.application.services.SaveHistoryUseCase
-import com.example.history.domain.entities.History
-import com.example.history.domain.repositories.HistoryRepository
+import com.example.history.application.service.FindHistoryUseCase
+import com.example.history.application.service.RemoveHistoryUseCase
+import com.example.history.application.service.SaveHistoryUseCase
+import com.example.history.domain.entity.History
+import com.example.history.domain.repository.HistoryRepository
 import org.springframework.stereotype.Service
 
 @Service

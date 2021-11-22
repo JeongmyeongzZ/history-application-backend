@@ -1,9 +1,9 @@
 package com.example.history.endpoint.api
 
-import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.RemoveHistoryUseCase
-import com.example.history.domain.entities.History
-import com.example.history.presentation.interfaces.api.DeleteHistoryController
+import com.example.history.application.service.FindHistoryUseCase
+import com.example.history.application.service.RemoveHistoryUseCase
+import com.example.history.domain.entity.History
+import com.example.history.presentation.ui.api.DeleteHistoryController
 import com.example.util.getMockHistory
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

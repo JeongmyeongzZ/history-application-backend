@@ -1,5 +1,6 @@
 create table history (
      id varchar(36) not null,
+     experience_id varchar(36) not null,
      title varchar(60) not null,
      content text not null,
      improvements text null,
@@ -9,6 +10,8 @@ create table history (
      updated_date date not null,
      PRIMARY KEY (id)
 ) engine=InnoDB collate=utf8mb4_general_ci;
+
+create index history_experience_id_index on history (experience_id);
 
 create index history_date_index on history (start_date, end_date);
 

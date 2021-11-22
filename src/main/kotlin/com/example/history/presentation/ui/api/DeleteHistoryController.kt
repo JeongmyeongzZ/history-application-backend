@@ -1,7 +1,7 @@
-package com.example.history.presentation.interfaces.api
+package com.example.history.presentation.ui.api
 
-import com.example.history.application.services.FindHistoryUseCase
-import com.example.history.application.services.RemoveHistoryUseCase
+import com.example.history.application.service.FindHistoryUseCase
+import com.example.history.application.service.RemoveHistoryUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PathVariable

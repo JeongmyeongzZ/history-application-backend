@@ -1,6 +1,6 @@
-package com.example.history.domain.repositories
+package com.example.history.domain.repository
 
-import com.example.history.domain.entities.History
+import com.example.history.domain.entity.History
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
