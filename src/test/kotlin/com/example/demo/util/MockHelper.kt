@@ -11,3 +11,11 @@ fun getMockHistory(): String {
 fun getMockHistories(): String {
     return Files.readString(Paths.get(ClassPathResource("stub/histories.json").uri))
 }
+
+fun getMockExperience(): String {
+    return Files.readString(Paths.get(ClassPathResource("stub/experience.json").uri))
+}
+
+fun getMockExperiences(): String {
+    return Files.readString(Paths.get(ClassPathResource("stub/experiences.json").uri))
+}
