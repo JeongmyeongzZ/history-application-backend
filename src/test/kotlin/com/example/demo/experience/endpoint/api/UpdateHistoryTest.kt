@@ -1,14 +1,15 @@
-package com.example.demo.history.endpoint.api
+package com.example.demo.experience.endpoint.api
 
-import com.example.demo.any
-import com.example.demo.history.application.service.SaveHistoryUseCase
-import com.example.demo.history.domain.entity.History
-import com.example.demo.history.presentation.ui.api.CreateHistoryController
-import com.example.demo.util.getMockHistory
+import com.example.demo.experience.application.service.FindExperienceUseCase
+import com.example.demo.experience.application.service.SaveExperienceUseCase
+import com.example.demo.experience.domain.entity.Experience
+import com.example.demo.experience.presentation.ui.api.UpdateExperienceController
+import com.example.demo.util.getMockExperience
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.junit.jupiter.api.Test
+import org.mockito.BDDMockito.anyString
 import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -16,42 +17,46 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 
-@WebMvcTest(controllers = [CreateHistoryController::class])
+@WebMvcTest(controllers = [UpdateExperienceController::class])
 @AutoConfigureMockMvc
-class CreateHistoryTest {
+class UpdateHistoryTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
 
     @MockBean
-    private lateinit var saveHistoryUseCase: SaveHistoryUseCase
+    private lateinit var findExperienceUseCase: FindExperienceUseCase
+
+    @MockBean
+    private lateinit var saveExperienceUseCase: SaveExperienceUseCase
 
     @Test
-    fun createHistory() {
+    fun updateExperience() {
 
         val mapper = jacksonObjectMapper().registerModule(JavaTimeModule())
 
-        val history: History = mapper.readValue(getMockHistory())
+        val experience: Experience = mapper.readValue(getMockExperience())
 
-        given(saveHistoryUseCase.save(any())).willReturn(history)
+        given(findExperienceUseCase.findById(anyString())).willReturn(experience)
+        given(saveExperienceUseCase.save(experience)).willReturn(experience)
 
         mockMvc.perform(
-            post("/api/experiences/f3415dc6-4b86-11ec-81d3-0242ac130003/histories")
+            put("/api/experiences/${experience.id}")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     "{" +
-                            "\"title\": \"some new title\",\n" +
-                            "\"content\": \"some new contents\",\n" +
+                            "\"company\": \"some new company\",\n" +
+                            "\"position\": \"some new position\",\n" +
                             "\"startDate\": \"2021-04-07\"\n" +
                             "}"
                 )
         )
-            .andExpect(status().isCreated)
+            .andExpect(status().isNoContent)
             .andDo(MockMvcResultHandlers.print())
     }
 }

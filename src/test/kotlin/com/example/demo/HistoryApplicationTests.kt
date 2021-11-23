@@ -1,4 +1,4 @@
-package com.example.demo.history
+package com.example.demo
 
 import org.mockito.Mockito
 import org.springframework.boot.test.context.SpringBootTest
