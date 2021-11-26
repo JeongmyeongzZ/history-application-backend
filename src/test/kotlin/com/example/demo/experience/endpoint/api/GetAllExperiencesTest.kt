@@ -1,7 +1,7 @@
 package com.example.demo.experience.endpoint.api
 
 import com.example.demo.experience.application.service.FindExperienceUseCase
-import com.example.demo.experience.presentation.ui.api.GetAllExperienceController
+import com.example.demo.experience.presentation.ui.api.GetAllExperiencesController
 import com.example.demo.util.getMockExperiences
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 
-@WebMvcTest(controllers = [GetAllExperienceController::class])
+@WebMvcTest(controllers = [GetAllExperiencesController::class])
 @AutoConfigureMockMvc
 class GetAllExperiencesTest {
 
