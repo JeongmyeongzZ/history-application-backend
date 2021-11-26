@@ -19,3 +19,11 @@ fun getMockExperience(): String {
 fun getMockExperiences(): String {
     return Files.readString(Paths.get(ClassPathResource("stub/experiences.json").uri))
 }
+
+fun getMockMemory(): String {
+    return Files.readString(Paths.get(ClassPathResource("stub/memory.json").uri))
+}
+
+fun getMockMemories(): String {
+    return Files.readString(Paths.get(ClassPathResource("stub/memories.json").uri))
+}
