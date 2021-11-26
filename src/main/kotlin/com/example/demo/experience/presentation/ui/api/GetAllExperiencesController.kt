@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/experiences")
-class GetAllExperienceController(private val service: FindExperienceUseCase) {
+class GetAllExperiencesController(private val service: FindExperienceUseCase) {
 
     @GetMapping
     fun getExperiences(): ResponseEntity<Iterable<Experience>> {
